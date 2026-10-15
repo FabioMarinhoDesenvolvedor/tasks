@@ -34,6 +34,16 @@ O Tasks usa o **Microsoft Edge WebView2**, que já vem no Windows 11 e na maiori
 - Atualizar para uma versão nova não apaga nada. Feche o Tasks antes de instalar a versão nova.
 - Para guardar uma cópia, use **Configurações → Exportar backup**. A restauração mostra o que será trazido antes de substituir, e guarda uma cópia de segurança dos dados atuais.
 
+## Segurança
+
+- **Não usa internet.** O Tasks não envia, não sincroniza e não coleta nada; não tem telemetria nem atualização automática. A janela só carrega o próprio aplicativo.
+- **Permissões mínimas.** A interface não acessa arquivos nem programas do computador por conta própria: ela só pode pedir as operações do Tasks (salvar tarefa, mover, exportar backup…), e cada pedido é validado antes de tocar no banco.
+- **Arquivos de fora são tratados como não confiáveis.** Importações em JSON têm limite de tamanho e validação completa. Backups `.sqlite3` são abertos só para leitura, sem confiar no esquema que trazem, e recusados se contiverem algo que o Tasks não cria. Antes de substituir seus dados, uma cópia de segurança verificada é guardada.
+- **Dependências auditadas.** Cada versão só é gerada se as bibliotecas passarem sem vulnerabilidades conhecidas (RustSec e npm).
+- **Confira o arquivo.** O instalador ainda não tem assinatura digital; o SHA-256 de cada versão está nas notas da release.
+
+Encontrou um problema de segurança? Abra uma [issue](https://github.com/FabioMarinhoDesenvolvedor/tasks/issues) sem detalhes sensíveis e eu entro em contato.
+
 ## Desinstalar
 
 Em **Configurações do Windows → Aplicativos**, procure “Tasks” e desinstale. Se pretende reinstalar depois, mantenha os dados do aplicativo quando o desinstalador perguntar.
